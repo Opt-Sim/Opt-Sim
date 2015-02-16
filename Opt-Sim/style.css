@@ -1,0 +1,211 @@
+
+	body
+	{
+
+		background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #31C9F7 200%);
+		background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #31C9F7 200%);
+		background-image: -o-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #31C9F7 200%);
+		background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FFFFFF), color-stop(2, #31C9F7));
+		background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #31C9F7 200%);
+		background-image: radial-gradient(ellipse farthest-corner at center, #FFFFFF 0%, #31C9F7 200%);
+		 	
+	}
+			
+	#container 
+	{
+		float:left;
+		width:78%;
+		height:90%;
+		z-index:-1;
+		-webkit-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+       -moz-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+        -ms-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+         -o-box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+            box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+	}
+		
+	#toolbar 
+	{
+		width:10%;
+		height:70%;
+		float:left;
+		margin-left:1%;
+		text-align:center;
+	}
+	
+	#lens
+	{
+		z-index:2;
+		width:80%;
+		height:10%;
+		border: 1px solid #000000;	
+		border-radius: 1%;
+		background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2BDBF 100%);
+		background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2BDBF 100%);
+		background-image: -o-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2BDBF 100%);
+		background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FFFFFF), color-stop(1, #F2BDBF));
+		background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2BDBF 100%);
+		background-image: radial-gradient(ellipse farthest-corner at center, #FFFFFF 0%, #F2BDBF 100%);
+		-webkit-transition: margin 0.2s ease-out;
+		-moz-transition: margin 0.2s ease-out;
+		-o-transition: margin 0.2s ease-out;
+	}
+	
+	#lens:hover
+	{	
+		margin-top: 15%;
+		margin-bottom: 15%;
+		-webkit-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+       -moz-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+        -ms-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+         -o-box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+            box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+	}
+	
+	#labels
+	{
+		width:80%;
+		height:10%;
+		border: 2px solid #000000;
+		border-radius: 1%;
+		font-size: 120%;
+		text-align:center;
+		background-color:yellow;
+	}
+	
+	
+	#object
+	{
+		width:80%;
+		height:10%;
+		border: 1px solid #000000;
+		border-radius: 1%;
+		-webkit-transition: margin 0.2s ease-out;
+		-moz-transition: margin 0.2s ease-out;
+		-o-transition: margin 0.2s ease-out;
+		background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #19F20A 200%);
+		background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #19F20A 200%);
+		background-image: -o-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #19F20A 200%);
+		background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FFFFFF), color-stop(2, #19F20A));
+		background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #19F20A 200%);
+		background-image: radial-gradient(ellipse farthest-corner at center, #FFFFFF 0%, #19F20A 200%);
+	}
+	
+	#object:hover 
+	{
+		cursor:pointer;
+		margin-top: 15%;
+		margin-bottom: 15%;
+		-webkit-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+       -moz-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+        -ms-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+         -o-box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+            box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+		width:80%;
+		height:16%;
+	}
+	
+	
+	#help1
+	{
+		width:80%;
+		height:10%;
+		border: 1px solid #000000;
+		border-radius: 1%;
+		-webkit-transition: margin 0.2s ease-out;
+		-moz-transition: margin 0.2s ease-out;
+		-o-transition: margin 0.2s ease-out;
+		background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2F216 200%);
+		background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2F216 200%);
+		background-image: -o-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2F216 200%);
+		background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FFFFFF), color-stop(2, #F2F216));
+		background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #F2F216 200%);
+		background-image: radial-gradient(ellipse farthest-corner at center, #FFFFFF 0%, #F2F216 200%);
+		
+	}
+	
+	#help1:hover 
+	{
+		cursor:pointer;
+		margin-top: 15%;
+		margin-bottom: 15%;
+		-webkit-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+		-moz-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+        -ms-box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+         -o-box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+        box-shadow: 0px 15px 15px rgba(0,0,0,0.5);
+		width:80%;
+		height:16%;
+	}
+	
+	
+	p{
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		color: #000000;
+		font-size: 120%;
+		padding: 5%;
+	}
+	
+	b
+	{
+		font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+		font-size: 29;
+	}
+
+	.overlay-bg
+	{
+		display: none;
+		position: absolute;
+		top: 0;
+		left: 0;
+		height:100%;
+		width: 100%;
+		cursor: pointer;
+		z-index: 1000; 
+		background: #000;
+		background: rgba(0,0,0,0.75);
+	}
+	.overlay-content
+	{
+		display: none;
+		background: #fff;
+		padding: 1%;
+		width: 60%;
+		height:80%;
+		position: absolute;
+		top: 15%;
+		left: 50%;
+		margin: 0 0 0 -30%;
+		cursor: default;
+		z-index: 10001;
+		border-radius: 4px;
+		box-shadow: 0 0 5px rgba(0,0,0,0.9);
+		font-size:100%;
+	}
+
+	.close-btn {
+		cursor: pointer;
+		border: 1px solid #333;
+		padding: 2% 5%;
+		background: #a9e7f9; /* fallback */
+		border-radius: 4px;
+		box-shadow: 0 0 4px rgba(0,0,0,0.3);
+	}
+	.close-btn:hover {
+		background: #05abe0;
+	}
+
+/* media query for most mobile devices */
+@media only screen and (min-width: 0px) and (max-width: 480px){
+
+	.overlay-content {
+		width: 96%;
+		margin: 0 2%;
+		
+	}
+}
+
+
+
+
+
