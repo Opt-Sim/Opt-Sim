@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+	<script type="text/javascript" src="lens.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v4.7.2.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+	<LINK REL=StyleSheet HREF="style.css" TYPE="text/css" >
+</head>
+<body onload="startup()">
+	<div id="main">
+	<div id="toolbar" align="center">
+	<div id="lensgroup" title="Drag and Drop upto two lenses">
+	<div id="labels">Lens</div>
+		<div id="lens" ><img id="lense0" name="convex_lense" class="lenses" width=100 height=100 src="100b.png"></div>
+		<div id="lens"><img id="lense1" name="concave_lense" class="lenses" width=100 height=100 src="100a.png"></div>
+		<div id="lens" ><img id="lense2" name="plano_convex_lense" class="lenses" width=100 height=100 src="100plano.png"></div>
+		<div id="lens"><img id="lense3" name="plano_concave_lense" class="lenses" width=100 height=100 src="plano100.png"></div>
+		<div id="lens" ><img id="lense4" name="meniscus_lense" class="lenses" width=100 height=100 src="100po.png"></div>
+		
+	</div></div>
+	<div id="container" align="center"></div>
+		<div id="toolbar" align="center">
+	<div id="objectgroup" title="Click one of these objects" >
+	<div id="labels">Objects</div>
+		<div id="object"><img id="object_arrow"  width=100% height=100% src="arr.png"></div>
+		<div id="object"><img id="object_triangle"  width=100% height=100% src="triangle.png"></div>
+		<div id="object"><img id="object_square"  width=100% height=100% src="box.png"></div>
+		</div>
+	<div id="labels">Help</div>
+		<div id="help1"><img id="help"  width=100% height=100% src="help.png"></div>
+	</div>
+	</div>
+	<div class="overlay-bg">
+</div>
+<div class="overlay-content popup1">
+    <p># In the toolbar there are five type of lenses avaiable. <br /><br />
+# <b>Drag & Drop</b> the lens to the experiment area to place the lens <br /><br />
+# <b>Click</b> on the Object to place the object in experimental area <br /><br />
+# You can add upto <b>two lenses</b> , after added two lenses you can <b>replace</b> the lens by dragging the wanted lens near to the existing lens.<br /><br />
+# You can <b>Drag</b> the lenses to get ray diagram after adding <b>second lens</b> <br /><br />
+# <b>Double click</b> on the lens to remove the lens from the experimental area.<br /><br />
+# There are three types of objects are available here <b>Arrow</b>, <b>Triangle</b> and <b>Rectangle</b>
+</p>
+    <button class="close-btn">Close</button>
+</div>
+
+</body>
+</html>
