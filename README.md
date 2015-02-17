@@ -6,7 +6,9 @@ It will be like getting image and ray diagram for object's position from lenses 
 Plano-Convex, Convex-Concave, Meniscus, Plano-Concave.
 We made that dynamic like we can drag the object towards or backward from lenses.
 We used Html5, kineticjs (JavaScript library) and CSS3 to develop this.
-We are contributing this project for Mozilla Science Lab.
+We are contributing this project for Mozilla Science Lab.<br/>
+Click below to check our project site and demo<br/>
+<a class="btn btn-primary btn-lg" href="http://uojopendesk.com/opt-sim/" role="button">See Demo</a></p>
 
 <h4>	Process Overview project </h4>
   
