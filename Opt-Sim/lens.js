@@ -62,7 +62,7 @@ $(function(){
         listening: true
     });
 
- var layer = new Kinetic.Layer();
+	var layer = new Kinetic.Layer();
 	
 		
 		//draw line
@@ -76,48 +76,33 @@ $(function(){
 		layer.add(principal_axis);
 		
 		var mouseToText = new Kinetic.Text({
-    x: $("#container").width()*0.015,
-    y: $("#container").height()*0.9,
-    fontFamily: "Calibri",
-    fontSize: $("#container").height()*0.06,
-    fill: "black",
-    stroke: null,
-    text: ""
-	});
-layer.add(mouseToText);
+			x: $("#container").width()*0.015,
+			y: $("#container").height()*0.9,
+			fontFamily: "Calibri",
+			fontSize: $("#container").height()*0.06,
+			fill: "black",
+			stroke: null,
+			text: ""
+			});
+		layer.add(mouseToText);
 
+		$("#lensgroup").on("mouseover", function(){
+			mouseToText.setText("Drag and Drop lens to the experimental area");
+			layer.drawScene();
+		});
+		$("#objectgroup").on("mouseover", function(){
+			mouseToText.setText("Click one of these objects");
+			layer.drawScene();
+		});
+		$("#reset").on("mouseover", function(){
+			mouseToText.setText("Click on reset to reset this experiment");
+			layer.drawScene();
+		});
+		$("#help1").on("mouseover", function(){
+			mouseToText.setText("Click on help to get help");
+			layer.drawScene();
+		});
 
-
-$("#lensgroup").on("mouseover", function(){
-
-mouseToText.setText("Drag and Drop lens to the experimental area");
-
-    layer.drawScene();
-});
-$("#objectgroup").on("mouseover", function(){
-
-mouseToText.setText("Click one of these objects");
-
-    layer.drawScene();
-});
-
-$("#reset").on("mouseover", function(){
-
-mouseToText.setText("Click on reset to reset this experiment");
-
-    layer.drawScene();
-});
-
-$("#help1").on("mouseover", function(){
-
-mouseToText.setText("Click on help to get help");
-
-    layer.drawScene();
-});
-
-
-
-	
 	//draw Arrow after click toolbar Arrow
 	var arrow_object = new Kinetic.Line({
 				points: [15,$("#container").height()*0.5,15,$("#container").height()*0.3,10,$("#container").height()*0.35,15,$("#container").height()*0.3,20,$("#container").height()*0.35],
@@ -278,8 +263,18 @@ mouseToText.setText("Click on help to get help");
 								}
 						} 
 					});	
-
-						
+					//Draw vertical_axis for lense_1
+					var vertical_axis = new Kinetic.Rect({
+							x: $("#container").width()*0.5,
+							y: ($("#container").height()*0),
+							width: 1.5,
+							height: $("#container").height(),
+							fill: "blue",
+							id:"vertical_axis1",
+							text:'the testing text'
+					});
+					layer.add(vertical_axis);
+					
 					//draw left 2f of the first lense
 						var twof_1 = new Kinetic.Rect({
 							x: $("#container").width()*0.2-2,
@@ -357,15 +352,28 @@ mouseToText.setText("Click on help to get help");
 						stage.find("#f_1")[0].setId("f_3");
 						stage.find("#f_2")[0].setId("f_4");
 												
-						stage.find("#2f_3")[0].setX(yy+8-$("#container").width()*0.3);
-						stage.find("#2f_4")[0].setX(yy+8+$("#container").width()*0.3);
-						stage.find("#f_3")[0].setX(yy+8-$("#container").width()*0.15);
-						stage.find("#f_4")[0].setX(yy+8+$("#container").width()*0.15);
+						stage.find("#2f_3")[0].setX(yy+13-$("#container").width()*0.3);
+						stage.find("#2f_4")[0].setX(yy+13+$("#container").width()*0.3);
+						stage.find("#f_3")[0].setX(yy+13-$("#container").width()*0.15);
+						stage.find("#f_4")[0].setX(yy+13+$("#container").width()*0.15);
 						
+						//Draw vertical_axis for lense_1
+						stage.find("#vertical_axis1")[0].setX($("#container").width()*0.5+200+15);
+						stage.find("#vertical_axis1")[0].setId("vertical_axis2");						
 						
+						var vertical_axis = new Kinetic.Rect({
+								x: xx+15,
+								y: ($("#container").height()*0),
+								width: 1.5,
+								height: $("#container").height(),
+								fill: "blue",
+								id:"vertical_axis1",
+								text:'the testing text'
+						});
+						layer.add(vertical_axis);
 						
 						var twof_3 = new Kinetic.Rect({//draw left 2f of the second lense
-								x: xx+8-$("#container").width()*0.3,
+								x: xx+13-$("#container").width()*0.3,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -373,7 +381,7 @@ mouseToText.setText("Click on help to get help");
 								id:"2f_1"
 							});
 							var twof_4 = new Kinetic.Rect({//draw right 2f of the second lense
-								x: xx+8+$("#container").width()*0.3,
+								x: xx+13+$("#container").width()*0.3,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -381,7 +389,7 @@ mouseToText.setText("Click on help to get help");
 								id:"2f_2"
 							});
 							var focal_3 = new Kinetic.Rect({//draw left f of the second lense
-								x: xx+8-$("#container").width()*0.15,
+								x: xx+13-$("#container").width()*0.15,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -389,7 +397,7 @@ mouseToText.setText("Click on help to get help");
 								id:"f_1"        
 							});	
 							var focal_4= new Kinetic.Rect({//draw right f of the second lense
-								x:  xx+8+$("#container").width()*0.15,
+								x:  xx+13+$("#container").width()*0.15,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -416,14 +424,26 @@ mouseToText.setText("Click on help to get help");
 							} 
 						});
 						lense_2_name=lense_id.name;	
-						stage.find("#2f_1")[0].setX(yy+8-$("#container").width()*0.3);
-						stage.find("#2f_2")[0].setX(yy+8+$("#container").width()*0.3);
-						stage.find("#f_1")[0].setX(yy+8-$("#container").width()*0.15);
-						stage.find("#f_2")[0].setX(yy+8+$("#container").width()*0.15);
+						stage.find("#2f_1")[0].setX(yy+13-$("#container").width()*0.3);
+						stage.find("#2f_2")[0].setX(yy+13+$("#container").width()*0.3);
+						stage.find("#f_1")[0].setX(yy+13-$("#container").width()*0.15);
+						stage.find("#f_2")[0].setX(yy+13+$("#container").width()*0.15);
 						
+						//Draw vertical_axis for lense_2
+						stage.find("#vertical_axis1")[0].setX($("#container").width()*0.5-200+15);
+						var vertical_axis = new Kinetic.Rect({
+								x: xx+15,
+								y: ($("#container").height()*0),
+								width: 1.5,
+								height: $("#container").height(),
+								fill: "blue",
+								id:"vertical_axis2",
+								text:'the testing text'
+						});
+						layer.add(vertical_axis);
 						
 							var twof_3 = new Kinetic.Rect({//draw left 2f of the second lense
-								x: xx+8-$("#container").width()*0.3,
+								x: xx+13-$("#container").width()*0.3,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -431,7 +451,7 @@ mouseToText.setText("Click on help to get help");
 								id:"2f_3"
 							});
 							var twof_4 = new Kinetic.Rect({//draw right 2f of the second lense
-								x: xx+8+$("#container").width()*0.3,
+								x: xx+13+$("#container").width()*0.3,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -439,7 +459,7 @@ mouseToText.setText("Click on help to get help");
 								id:"2f_4"
 							});
 							var focal_3 = new Kinetic.Rect({//draw left f of the second lense
-								x: xx+8-$("#container").width()*0.15,
+								x: xx+13-$("#container").width()*0.15,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -447,7 +467,7 @@ mouseToText.setText("Click on help to get help");
 								id:"f_3"        
 							});	
 							var focal_4= new Kinetic.Rect({//draw right f of the second lense
-								x:  xx+8+$("#container").width()*0.15,
+								x:  xx+13+$("#container").width()*0.15,
 								y: ($("#container").height()*0.5)-10,
 								width: 4,
 								height: 20,
@@ -481,6 +501,18 @@ mouseToText.setText("Click on help to get help");
 							} 
 						});	
 						lense_1_name=lense_id.name;
+						//Draw vertical_axis for lense_1
+						stage.get('#vertical_axis1').remove();						
+						var vertical_axis = new Kinetic.Rect({
+								x: $("#container").width()*0.5-200+15,
+								y: ($("#container").height()*0),
+								width: 1.5,
+								height: $("#container").height(),
+								fill: "blue",
+								id:"vertical_axis1",
+								text:'the testing text'
+						});
+						layer.add(vertical_axis);
 					}else{//if dropped position of thired lense is greater than half of window it will replace second lense
 						stage.get('#lense_2').remove();
 						var image = new Kinetic.Image({
@@ -500,6 +532,18 @@ mouseToText.setText("Click on help to get help");
 							} 
 						});	
 						lense_2_name=lense_id.name;
+						//Draw vertical_axis for lense_2
+						stage.get('#vertical_axis2').remove();						
+						var vertical_axis = new Kinetic.Rect({
+								x: $("#container").width()*0.5+200+15,
+								y: ($("#container").height()*0),
+								width: 1.5,
+								height: $("#container").height(),
+								fill: "blue",
+								id:"vertical_axis2",
+								text:'the testing text'
+						});
+						layer.add(vertical_axis);
 					}					
 					image.setDraggable(true);//After dropped second lense enabble already exist lense to be draggable
 				}				
@@ -531,28 +575,28 @@ mouseToText.setText("Click on help to get help");
 					deleteray();
 					deleteray2();
 				//find slope between principal axis and the ray go through the optical center
-				slope_1=($("#container").height()*0.2)/(lense_1_position.x+10-object_position_x);
+				slope_1=($("#container").height()*0.2)/(lense_1_position.x+15-object_position_x);
 				
 				if(lense_2_name==null){
-					lense1_ray1_end_point_y=($("#container").width()-(lense_1_position.x+10))*slope_1+$("#container").height()*0.5;
+					lense1_ray1_end_point_y=($("#container").width()-(lense_1_position.x+15))*slope_1+$("#container").height()*0.5;
 					lense1_ray1_end_point_x=$("#container").width();
 				}else{
 					lense1_ray1_end_point_y=(lense_2_position.x-lense_1_position.x)*slope_1+$("#container").height()*0.5;
-					lense1_ray1_end_point_x=lense_2_position.x+10;
+					lense1_ray1_end_point_x=lense_2_position.x+15;
 				}
 				//find slope between principal axis and the ray go through the focal point
 				slope_2=($("#container").height()*0.2)/($("#container").width()*0.15);
 				
 				if(lense_2_name==null){
-					lense1_ray2_end_point_y=($("#container").width()*0.85-(lense_1_position.x+10))*slope_2+$("#container").height()*0.5;
+					lense1_ray2_end_point_y=($("#container").width()*0.85-(lense_1_position.x+15))*slope_2+$("#container").height()*0.5;
 					lense1_ray2_end_point_x=$("#container").width();
 				}else{
 					lense1_ray2_end_point_y=(lense_2_position.x-(lense_1_position.x+$("#container").width()*0.15))*slope_2+$("#container").height()*0.5;
-					lense1_ray2_end_point_x=lense_2_position.x+10;
+					lense1_ray2_end_point_x=lense_2_position.x+15;
 				}
 				//draw central ray 
 				var central_ray = new Kinetic.Line({
-					points: [object_position_x,$("#container").height()*0.3,lense_1_position.x+10,$("#container").height()*0.5,lense1_ray1_end_point_x,lense1_ray1_end_point_y],
+					points: [object_position_x,$("#container").height()*0.3,lense_1_position.x+15,$("#container").height()*0.5,lense1_ray1_end_point_x,lense1_ray1_end_point_y],
 					stroke: 'black',
 					strokeWidth: 2,
 					lineCap: 'butt',
@@ -561,7 +605,7 @@ mouseToText.setText("Click on help to get help");
 				});
 				//draw ray from object to lense(half of principal ray)				
 				var incident_ray = new Kinetic.Line({
-					points: [object_position_x,$("#container").height()*0.3,lense_1_position.x+10,$("#container").height()*0.3],
+					points: [object_position_x,$("#container").height()*0.3,lense_1_position.x+15,$("#container").height()*0.3],
 					stroke: 'black',
 					strokeWidth: 2,
 					lineCap: 'butt',
@@ -572,14 +616,14 @@ mouseToText.setText("Click on help to get help");
 				layer.add(incident_ray);
 				
 				if(lense_1_name=="convex_lense"  || lense_1_name=="plano_convex_lense" || lense_1_name=="meniscus_lense"){
-					focal_point_lense_1=lense_1_position.x+10+$("#container").width()*0.15;
+					focal_point_lense_1=lense_1_position.x+15+$("#container").width()*0.15;
 				}else if(lense_1_name=="concave_lense" || lense_1_name=="plano_concave_lense"){
-					focal_point_lense_1=lense_1_position.x+10-$("#container").width()*0.15;
+					focal_point_lense_1=lense_1_position.x+15-$("#container").width()*0.15;
 				}
 				//find intesection point of principal ray and central ray in first lense
-				intersect_point_1=intersect(object_position_x,$("#container").height()*0.3,lense_1_position.x+10,$("#container").height()*0.5,lense_1_position.x+10,$("#container").height()*0.3,focal_point_lense_1,$("#container").height()*0.5);
+				intersect_point_1=intersect(object_position_x,$("#container").height()*0.3,lense_1_position.x+15,$("#container").height()*0.5,lense_1_position.x+15,$("#container").height()*0.3,focal_point_lense_1,$("#container").height()*0.5);
 				if(object_name=="triangle" || object_name=="square"){
-					intersect_point_1_tri_squ=intersect(object_position_x-30,$("#container").height()*0.3,lense_1_position.x+10,$("#container").height()*0.5,lense_1_position.x+10,$("#container").height()*0.3,focal_point_lense_1,$("#container").height()*0.5);
+					intersect_point_1_tri_squ=intersect(object_position_x-30,$("#container").height()*0.3,lense_1_position.x+15,$("#container").height()*0.5,lense_1_position.x+15,$("#container").height()*0.3,focal_point_lense_1,$("#container").height()*0.5);
 				}
 				if(object_name=="arrow"){
 					if(intersect_point_1.y>$("#container").height()*0.5){	
@@ -626,16 +670,15 @@ mouseToText.setText("Click on help to get help");
 					}
 
 
-if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<0 || intersect_point_1.x>$("#container").width()) && (intersect_point_1_tri_squ.x<0 || intersect_point_1_tri_squ.x>$("#container").width())))
-					{
-						layer.add(image_1);
-					}					
-					
-				}
+				if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<0 || intersect_point_1.x>$("#container").width()) && (intersect_point_1_tri_squ.x<0 || intersect_point_1_tri_squ.x>$("#container").width())))
+				{
+					layer.add(image_1);
+				}			
+			}
 			if(lense_1_name=="convex_lense" || lense_1_name=="plano_convex_lense" || lense_1_name=="meniscus_lense"){	//do if the dropped lense is Convex Lense					
 					//draw ray from lense - focal point to border of box (half of principal ray)	
 					var refracted_ray_convex = new Kinetic.Line({
-							points: [lense_1_position.x+10,$("#container").height()*0.3,lense1_ray2_end_point_x,lense1_ray2_end_point_y],
+							points: [lense_1_position.x+15,$("#container").height()*0.3,lense1_ray2_end_point_x,lense1_ray2_end_point_y],
 							stroke: 'black',
 							strokeWidth: 2,
 							lineCap: 'butt',
@@ -647,15 +690,15 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 				
 							if(lense_2_name!=null){//do if there is second Lense		
 								//find the focal point
-								if((lense_2_name=="convex_lense" && intersect_point_1.x>lense_2_position.x+10) || (lense_2_name=="convex_lense" && intersect_point_1.x<lense_2_position.x+10) || (lense_2_name=="plano_convex_lense" && intersect_point_1.x>lense_2_position.x+10) || (lense_2_name=="plano_convex_lense" && intersect_point_1.x<lense_2_position.x+10) || (lense_2_name=="meniscus_lense" && intersect_point_1.x>lense_2_position.x+10) || (lense_2_name=="meniscus_lense" && intersect_point_1.x<lense_2_position.x+10)){
-									focal_point_lense_2=lense_2_position.x+10+$("#container").width()*0.15;
-								}else if((lense_2_name=="concave_lense" && intersect_point_1.x>lense_2_position.x+10) || (lense_2_name=="concave_lense" && intersect_point_1.x<lense_2_position.x+10) || (lense_2_name=="plano_concave_lense" && intersect_point_1.x>lense_2_position.x+10) || (lense_2_name=="plano_concave_lense" && intersect_point_1.x<lense_2_position.x+10)){
-									focal_point_lense_2=lense_2_position.x+10-$("#container").width()*0.15;
+								if((lense_2_name=="convex_lense" && intersect_point_1.x>lense_2_position.x+15) || (lense_2_name=="convex_lense" && intersect_point_1.x<lense_2_position.x+15) || (lense_2_name=="plano_convex_lense" && intersect_point_1.x>lense_2_position.x+15) || (lense_2_name=="plano_convex_lense" && intersect_point_1.x<lense_2_position.x+15) || (lense_2_name=="meniscus_lense" && intersect_point_1.x>lense_2_position.x+15) || (lense_2_name=="meniscus_lense" && intersect_point_1.x<lense_2_position.x+15)){
+									focal_point_lense_2=lense_2_position.x+15+$("#container").width()*0.15;
+								}else if((lense_2_name=="concave_lense" && intersect_point_1.x>lense_2_position.x+15) || (lense_2_name=="concave_lense" && intersect_point_1.x<lense_2_position.x+15) || (lense_2_name=="plano_concave_lense" && intersect_point_1.x>lense_2_position.x+15) || (lense_2_name=="plano_concave_lense" && intersect_point_1.x<lense_2_position.x+15)){
+									focal_point_lense_2=lense_2_position.x+15-$("#container").width()*0.15;
 								}
 								// find intesection point of the principal ray and central ray in second lense if the first lense is Convex
-								intersect_point_2=intersect(lense_2_position.x+10,intersect_point_1.y,focal_point_lense_2,$("#container").height()*0.5,intersect_point_1.x,intersect_point_1.y,lense_2_position.x+10,$("#container").height()*0.5);		  
+								intersect_point_2=intersect(lense_2_position.x+15,intersect_point_1.y,focal_point_lense_2,$("#container").height()*0.5,intersect_point_1.x,intersect_point_1.y,lense_2_position.x+15,$("#container").height()*0.5);		  
 								if(object_name=="triangle" || object_name=="square"){
-									intersect_point_2_tri_squ=intersect(lense_2_position.x+10,intersect_point_1_tri_squ.y,focal_point_lense_2,$("#container").height()*0.5,intersect_point_1_tri_squ.x,intersect_point_1_tri_squ.y,lense_2_position.x+10,$("#container").height()*0.5);
+									intersect_point_2_tri_squ=intersect(lense_2_position.x+15,intersect_point_1_tri_squ.y,focal_point_lense_2,$("#container").height()*0.5,intersect_point_1_tri_squ.x,intersect_point_1_tri_squ.y,lense_2_position.x+15,$("#container").height()*0.5);
 								}
 								if(object_name=="arrow"){
 									if(intersect_point_2.y>$("#container").height()*0.5){	
@@ -704,11 +747,11 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 								}
 							} 						
 						//draw infinite rays if object is within F
-						if(object_position_x>lense_1_position.x+10-$("#container").width()*0.15){
+						if(object_position_x>lense_1_position.x+15-$("#container").width()*0.15){
 							if(lense_2_name==null){
 							for(var i=1;i<3;i++){
 								if(i==1){x4=object_position_x;idd="reflected_ray1_lense1";}
-								else if(i==2){x4=lense_1_position.x+10;idd="reflected_ray2_lense1";}
+								else if(i==2){x4=lense_1_position.x+15;idd="reflected_ray2_lense1";}
 									var reflected_ray = new Kinetic.Line({
 										points: [intersect_point_1.x,intersect_point_1.y,x4,$("#container").height()*0.3],
 										stroke: 'black',
@@ -729,15 +772,15 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 				slope_3=Math.abs($("#container").height()*0.2/($("#container").width()*0.15));
 				if(lense_2_name==null){
 					lense1_ray2_end_point_y=0;
-					lense1_ray2_end_point_x=($("#container").height()*0.5/slope_3)+lense_1_position.x+10-$("#container").width()*0.15;
+					lense1_ray2_end_point_x=($("#container").height()*0.5/slope_3)+lense_1_position.x+15-$("#container").width()*0.15;
 				}
 				else{
-					lense1_ray2_end_point_x=lense_2_position.x+10;
+					lense1_ray2_end_point_x=lense_2_position.x+15;
 					lense1_ray2_end_point_y=$("#container").height()*0.5-(lense_2_position.x-(lense_1_position.x-$("#container").width()*0.15))*slope_3;
 				}
 				//draw line from principal focus to infinite
 				var refracted_ray_concave = new Kinetic.Line({
-					points: [lense_1_position.x+10,$("#container").height()*0.3,lense1_ray2_end_point_x,lense1_ray2_end_point_y],
+					points: [lense_1_position.x+15,$("#container").height()*0.3,lense1_ray2_end_point_x,lense1_ray2_end_point_y],
 					stroke: 'black',
 					strokeWidth: 2,
 					lineCap: 'butt',
@@ -745,7 +788,7 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 					lineJoin: 'bevel'
 				});
 				var reflected_ray_concave = new Kinetic.Line({
-					points: [lense_1_position.x+10,$("#container").height()*0.3,lense_1_position.x+10-$("#container").width()*0.15+4,$("#container").height()*0.5],
+					points: [lense_1_position.x+15,$("#container").height()*0.3,lense_1_position.x+15-$("#container").width()*0.15+4,$("#container").height()*0.5],
 					stroke: 'black',
 					strokeWidth: 2,
 					lineCap: 'butt',
@@ -757,14 +800,14 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 				
 				if(lense_2_name!=null){	//if there is second lense							
 						if(lense_2_name=="convex_lense" || lense_2_name=="plano_convex_lense" || lense_2_name=="meniscus_lense"){
-							focal_point_lense_2=lense_2_position.x+10+$("#container").width()*0.15;
+							focal_point_lense_2=lense_2_position.x+15+$("#container").width()*0.15;
 						}else if(lense_2_name=="concave_lense" || lense_2_name=="plano_concave_lense"){
-							focal_point_lense_2=lense_2_position.x+10-$("#container").width()*0.15;
+							focal_point_lense_2=lense_2_position.x+15-$("#container").width()*0.15;
 						}
 						//find intesection point of principal ray and central ray in second lense if second lense is Concave
-						intersect_point_3=intersect(intersect_point_1.x,intersect_point_1.y,lense_2_position.x+10,$("#container").height()*0.5,lense_2_position.x+10,intersect_point_1.y,focal_point_lense_2,$("#container").height()*0.5);
+						intersect_point_3=intersect(intersect_point_1.x,intersect_point_1.y,lense_2_position.x+15,$("#container").height()*0.5,lense_2_position.x+15,intersect_point_1.y,focal_point_lense_2,$("#container").height()*0.5);
 						if(object_name=="triangle" || object_name=="square"){
-							intersect_point_3_tri_squ=intersect(intersect_point_1_tri_squ.x,intersect_point_1_tri_squ.y,lense_2_position.x+10,$("#container").height()*0.5,lense_2_position.x+10,intersect_point_1_tri_squ.y,focal_point_lense_2,$("#container").height()*0.5);
+							intersect_point_3_tri_squ=intersect(intersect_point_1_tri_squ.x,intersect_point_1_tri_squ.y,lense_2_position.x+15,$("#container").height()*0.5,lense_2_position.x+15,intersect_point_1_tri_squ.y,focal_point_lense_2,$("#container").height()*0.5);
 						}
 						if(object_name=="arrow"){
 							if(intersect_point_3.y>$("#container").height()*0.5){	
@@ -822,7 +865,7 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 							xx=intersect_point_3;
 					}					
 					var reflected_ray_lense2_1 = new Kinetic.Line({
-								points: [lense_2_position.x+10,lense1_ray1_end_point_y,xx.x,xx.y],
+								points: [lense_2_position.x+15,lense1_ray1_end_point_y,xx.x,xx.y],
 								stroke: 'black',
 								strokeWidth: 2,
 								lineCap: 'butt',
@@ -830,29 +873,29 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 								lineJoin: 'bevel'
 					});	
 					var reflected_ray_lense2_2 = new Kinetic.Line({
-							points: [lense_2_position.x+10,lense1_ray2_end_point_y,xx.x,xx.y],
+							points: [lense_2_position.x+15,lense1_ray2_end_point_y,xx.x,xx.y],
 							stroke: 'black',
 							strokeWidth: 2,
 							lineCap: 'butt',
 							id:'reflected_ray_lense2_2',
 							lineJoin: 'bevel'
 					});	
-					if(xx.x<lense_2_position.x+10){
+					if(xx.x<lense_2_position.x+15){
 							reflected_ray_lense2_1.setDashArray([29, 1, 0.001, 1]);										
 							reflected_ray_lense2_2.setDashArray([29, 1, 0.001, 1]);
-							slope_4=Math.abs((xx.y-lense1_ray1_end_point_y)/(lense_2_position.x+10-xx.x));
-							slope_5=Math.abs((xx.y-lense1_ray2_end_point_y)/(lense_2_position.x+10-xx.x));
+							slope_4=Math.abs((xx.y-lense1_ray1_end_point_y)/(lense_2_position.x+15-xx.x));
+							slope_5=Math.abs((xx.y-lense1_ray2_end_point_y)/(lense_2_position.x+15-xx.x));
 							
 							if(xx.y<lense1_ray1_end_point_y)				
-							lense2_ray1_end_point_y=lense1_ray1_end_point_y+slope_4*($("#container").width()-(lense_2_position.x+10));
+							lense2_ray1_end_point_y=lense1_ray1_end_point_y+slope_4*($("#container").width()-(lense_2_position.x+15));
 							else
-							lense2_ray1_end_point_y=lense1_ray1_end_point_y-slope_4*($("#container").width()-(lense_2_position.x+10));
+							lense2_ray1_end_point_y=lense1_ray1_end_point_y-slope_4*($("#container").width()-(lense_2_position.x+15));
 							if(xx.y<lense1_ray2_end_point_y)				
-							lense2_ray2_end_point_y=lense1_ray2_end_point_y+slope_5*($("#container").width()-(lense_2_position.x+10));
+							lense2_ray2_end_point_y=lense1_ray2_end_point_y+slope_5*($("#container").width()-(lense_2_position.x+15));
 							else
-							lense2_ray2_end_point_y=lense1_ray2_end_point_y-slope_5*($("#container").width()-(lense_2_position.x+10));
+							lense2_ray2_end_point_y=lense1_ray2_end_point_y-slope_5*($("#container").width()-(lense_2_position.x+15));
 							var reflected_ray_lense2_3 = new Kinetic.Line({
-								points: [lense_2_position.x+10,lense1_ray1_end_point_y,$("#container").width(),lense2_ray1_end_point_y],
+								points: [lense_2_position.x+15,lense1_ray1_end_point_y,$("#container").width(),lense2_ray1_end_point_y],
 								stroke: 'black',
 								strokeWidth: 2,
 								lineCap: 'butt',
@@ -860,7 +903,7 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 								lineJoin: 'bevel'
 							});
 							var reflected_ray_lense2_4 = new Kinetic.Line({
-								points: [lense_2_position.x+10,lense1_ray2_end_point_y,$("#container").width(),lense2_ray2_end_point_y],
+								points: [lense_2_position.x+15,lense1_ray2_end_point_y,$("#container").width(),lense2_ray2_end_point_y],
 								stroke: 'black',
 								strokeWidth: 2,
 								lineCap: 'butt',
@@ -938,6 +981,7 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 					stage.get('#2f_2').remove();
 					stage.get('#f_1').remove();
 					stage.get('#f_2').remove();
+					stage.get('#vertical_axis1').remove();
 					
 					if(lense_2_name!=null){
 						lense_1_name=lense_2_name;						
@@ -951,7 +995,7 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 						stage.find("#2f_2")[0].setFill("blue");
 						stage.find("#f_1")[0].setFill("blue");
 						stage.find("#f_2")[0].setFill("blue");
-						
+						stage.find("#vertical_axis2")[0].setId("vertical_axis1");
 					}else{ 
 						lense_1_name=null;
 						stage.get('#central_ray').remove();
@@ -969,6 +1013,7 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 					stage.get('#2f_4').remove();
 					stage.get('#f_3').remove();
 					stage.get('#f_4').remove();
+					stage.get('#vertical_axis2').remove();
 					stage.find("#2f_1")[0].setFill("blue");
 					stage.find("#2f_2")[0].setFill("blue");
 					stage.find("#f_1")[0].setFill("blue");
@@ -989,34 +1034,22 @@ if((object_name=="square" || object_name=="triangle") && !((intersect_point_1.x<
 				drawImage();
 			});
 			
-			
 			image.on("mouseover", function(){
-
-mouseToText.setText("Double click to remove lens");
-
-    layer.drawScene();
-});
-
+				mouseToText.setText("Double click to remove lens");
+				layer.drawScene();
+			});
 			square_object.on("mouseover", function(){
-
-mouseToText.setText("Drag this polygon horizontal to get ray diagram");
-
-    layer.drawScene();
-});
-
-triangle_object.on("mouseover", function(){
-
-mouseToText.setText("Drag this Triangle horizontal to get ray diagram");
-
-    layer.drawScene();
-});
-
-arrow_object.on("mouseover", function(){
-
-mouseToText.setText("Drag this Arrow horizontal to get ray diagram");
-
-    layer.drawScene();
-});
+				mouseToText.setText("Drag this polygon horizontal to get ray diagram");
+				layer.drawScene();
+			});
+			triangle_object.on("mouseover", function(){
+				mouseToText.setText("Drag this Triangle horizontal to get ray diagram");
+				layer.drawScene();
+			});
+			arrow_object.on("mouseover", function(){
+				mouseToText.setText("Drag this Arrow horizontal to get ray diagram");
+				layer.drawScene();
+			});
 
 			//dragmove function for lenses
 			image.on("dragmove", function(evt) {
@@ -1053,26 +1086,26 @@ mouseToText.setText("Drag this Arrow horizontal to get ray diagram");
 					});				
 				}
 				if(lense_instance_id=="lense_1"){
-					stage.find('#2f_1')[0].setX(lense_1_position.x+8-$("#container").width()*0.3);
-					stage.find('#2f_2')[0].setX(lense_1_position.x+8+$("#container").width()*0.3);
-					stage.find('#f_1')[0].setX(lense_1_position.x+8-$("#container").width()*0.15);
-					stage.find('#f_2')[0].setX(lense_1_position.x+8+$("#container").width()*0.15);
+					stage.find('#2f_1')[0].setX(lense_1_position.x+13-$("#container").width()*0.3);
+					stage.find('#2f_2')[0].setX(lense_1_position.x+13+$("#container").width()*0.3);
+					stage.find('#f_1')[0].setX(lense_1_position.x+13-$("#container").width()*0.15);
+					stage.find('#f_2')[0].setX(lense_1_position.x+13+$("#container").width()*0.15);
+					
+					stage.find('#vertical_axis1')[0].setX(lense_1_position.x+15);
 				}
 				else if(lense_instance_id=="lense_2"){
-					stage.find('#2f_3')[0].setX(lense_2_position.x+8-$("#container").width()*0.3);
-					stage.find('#2f_4')[0].setX(lense_2_position.x+8+$("#container").width()*0.3);
-					stage.find('#f_3')[0].setX(lense_2_position.x+8-$("#container").width()*0.15);
-					stage.find('#f_4')[0].setX(lense_2_position.x+8+$("#container").width()*0.15);
+					stage.find('#2f_3')[0].setX(lense_2_position.x+13-$("#container").width()*0.3);
+					stage.find('#2f_4')[0].setX(lense_2_position.x+13+$("#container").width()*0.3);
+					stage.find('#f_3')[0].setX(lense_2_position.x+13-$("#container").width()*0.15);
+					stage.find('#f_4')[0].setX(lense_2_position.x+13+$("#container").width()*0.15);
+					
+					stage.find('#vertical_axis2')[0].setX(lense_2_position.x+15);
 				}				
 			});
 			
 			layer.add(image);
 			layer.draw();
 		}
-		
-		
-		
-
 		
 		stage.add(layer);	
 });
