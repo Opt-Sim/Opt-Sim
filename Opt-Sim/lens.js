@@ -16,7 +16,7 @@ $(function(){
 		var object_position_x;
 		var imageCount = -1;
 		var imageSrc = [
-			"convex.png","concave.png","planoconvex.png","planoconcave.png","negative.png"
+			"Images/convex.png","Images/concave.png","Images/planoconvex.png","Images/planoconcave.png","Images/negative.png"
 			
 		];
 			
